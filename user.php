@@ -1,6 +1,6 @@
 <?php
 session_start();
-//print_r($_SESSION);
+//print_r($_SESSION);die;
 
 //die;
 
@@ -9,7 +9,7 @@ session_start();
     include_once('inc/function.php');
 	include_once('public/header.php');
 	
-  if(!isset($_SESSION['user']))
+   if(!isset($_SESSION['employee']))
             { 
                header('location:login.php') ;
             }

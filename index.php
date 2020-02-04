@@ -7,10 +7,11 @@ $id=$_SESSION['id'];
 	include_once('inc/db.php');
     include_once('inc/function.php');
 	include_once('public/header.php');
-  if(!isset($_SESSION['user']))
+  if(isset($_SESSION['employee']))
             { 
                header('location:login.php') ;
             }
+           
     $role_id=0;        
     $a=show_users($conn,$role_id); 
     //print_r($a);die;
