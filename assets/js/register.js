@@ -1,7 +1,7 @@
 $('document').ready(function(){
 
-	$('#register').click( function(){
-		
+	$('#register').click( function(e){
+		e.preventDefault();
 		var data = $('#register_form').serialize();
 		if( data !== ""){
 			$.ajax({
@@ -10,12 +10,29 @@ $('document').ready(function(){
 				data:data,
 				dataType:'json',
 				success:function(res){
-					if(res.error == false){
-						alert(res.success);
-						window.location.href="login.php";
-					}else{
-						alert(res.error);
+					if(res.success)
+					{
+						$('.msg').text(res.success);
+					    setTimeout(sending, 2000);
 					}
+					else{
+							$('.msg').text(res.error)
+					}
+					
+					function sending()
+					{
+					if(res.error == false){
+							
+					 window.location.href="login.php";
+						
+					}
+						
+					}
+
+
+
+
+
 				}
 			});
 		}

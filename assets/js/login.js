@@ -12,7 +12,9 @@ $('document').ready(function(){
 			data:data,
 			dataType:'json',
 			success:function(resp){
-					alert(resp.msg);
+				  $('.msg').text(resp.msg);
+				  setTimeout(sending,1000);
+					function sending(){
 					if(resp.user=='admin'){
 						window.location.href="index.php";}
 						else{
@@ -22,7 +24,7 @@ $('document').ready(function(){
 						window.location.href="register.php";
 					}
 				
-
+					}
 			}
 		})
 	}

@@ -61,10 +61,19 @@ session_start();
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
+            <li><a href="user.php"> <i class="icon-home"></i>Home                             </a></li>
              <li><a href="leave.php"> <i class="icon-grid"></i>Leaves</a></li> 
-			 <li><a href="date.php"><i class="icon-form"></i>Datepicker 
-			</a></li>
+			 
+
+			<li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
+              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li><a href="#">Page</a></li>
+                <li><a href="#">Page</a></li>
+                <li><a href="#">Page</a></li>
+              </ul>
+            </li>
+			<li><a href="date.php"><i class="icon-form"></i>Datepicker</a></li> 
+			
 		
 			  
 			 
@@ -160,10 +169,11 @@ session_start();
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
+				<li class="nav-item"><a href="logout.php"><span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
                
 				
-                <!-- Log out-->
-                <li class="nav-item"><a href="<?=BASE_URL?>" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+              
+
                  <?php
             //print_r($_SESSION['user']);die;
             if(!isset($_SESSION['user']))

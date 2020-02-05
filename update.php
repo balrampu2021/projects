@@ -21,6 +21,9 @@ $username = $_POST['username'];
  if(isset($_POST['email'])||isset($_POST['username'])){
  update_user($conn,$_GET['edit'],$username,$email);
  }
+ else{
+
+ }
  
 
 

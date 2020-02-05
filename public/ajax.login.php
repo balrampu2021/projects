@@ -42,10 +42,12 @@ if(!empty($_POST['loginUsername']) && !empty($_POST['loginPassword'])){
 				if($a['role_id']==1){
 
 					$resp['user'] = 'admin';
+					$_SESSION['admin']=$_POST['loginUsername'];
 
 				}
 				else{
 					$resp['user']= 'user';
+					$_SESSION['employee']=$_POST['loginUsername'];
 				}
 				
 				$_SESSION['user']=$_POST['loginUsername'];

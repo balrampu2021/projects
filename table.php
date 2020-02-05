@@ -177,8 +177,8 @@ session_start();
 					 <td><?php echo $value['department']; ?></td>
                    
                     <td><?php echo $value['created_on']; ?></td>
-					<td><a href="delete.php?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Delete</button></a></td>
-					<td><a href="update.php?edit=<?php echo $value['id'];?>"><button class="btn btn-danger">Edit</button></a></td>
+					<td><button class="btn btn-warning"><a href="delete.php?id=<?php echo $value['id'];?>">Delete</a></button></td>
+					<td><button class="btn btn-danger"><a href="update.php?edit=<?php echo $value['id'];?>">Edit</a></button></td>
 					
 				
                     
@@ -190,7 +190,7 @@ session_start();
 
                    }
                   
-    $_SESSION['count']=$count; 
+     $_SESSION['count']=$count; 
                 
               ?>
                 

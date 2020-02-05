@@ -45,6 +45,7 @@ $_SESSION['ip']=$ipaddfinal;
 			 
             <!--iv class="form-group text-center"><a id="login" href="index.html" class="btn btn-primary">Login</a>-->
                 <input type=submit value="submit" id="login"  name="login" class="btn btn-primary">
+				<div class='msg text-primary '></div>
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </div>
             </form><a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>

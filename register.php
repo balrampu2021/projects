@@ -39,6 +39,7 @@ session_start();
               </div>
               <div class="form-group text-center">
                 <input id="register" type="submit" name="submit" value="Register" class="btn btn-primary">
+				<div class='msg text-primary '></div>
               </div>
             </form><small>Already have an account? </small><a href="<?= BASE_URL?>login.php" class="signup">Login</a>
           </div>

@@ -9,10 +9,11 @@ session_start();
     include_once('inc/function.php');
 	include_once('public/header.php');
 	
-  if(!isset($_SESSION['user']))
+  if(!isset($_SESSION['employee']))
             { 
                header('location:login.php') ;
             }
+			
 			$id=$_SESSION['id'];
 			 $a=select_users($conn,$id);
 		
@@ -84,7 +85,7 @@ session_start();
                 </li>
 				
                 <!-- Log out-->
-                <li class="nav-item"><a href="<?=BASE_URL?>logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
                  <?php
             //print_r($_SESSION['user']);die;
             if(!isset($_SESSION['user']))
@@ -212,7 +213,7 @@ session_start();
                   </ul>
                 </li>
                 
-                <li class="nav-item"><a href="logout.php?logout=<?php echo $value['id'];?>"><span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="logout.php"><span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
                  <?php
             //print_r($_SESSION['user']);die;
             if(!isset($_SESSION['user']))
