@@ -2,8 +2,9 @@
 <?php 
    
  	session_start();
+//print_r($_SESSION);die;
 
-  date_default_timezone_set("Asia/kolkata");
+  //date_default_timezone_set("Asia/kolkata");
 // include_once('../inc/db.php');
 // include_once('../inc/function.php');
 
@@ -26,7 +27,7 @@
 //  echo json_encode($resp);
 
 
-	
+	$ip=$_SESSION['ip'];
 
 include_once('../inc/db.php');
 include_once('../inc/function.php');
@@ -34,19 +35,17 @@ include_once('../inc/function.php');
 
 if(!empty($_POST['loginUsername']) && !empty($_POST['loginPassword'])){
 		
-		if($a=login_user($conn, $_POST['loginUsername'], $_POST['loginPassword']) ){
-			
+		if($a=login_user($conn, $_POST['loginUsername'], $_POST['loginPassword'],$ip)){
+		
+		
 				
 				if($a['role_id']==1){
 
 					$resp['user'] = 'admin';
-					$_SESSION['admin']=$_POST['loginUsername'];
 
 				}
 				else{
 					$resp['user']= 'user';
-					$_SESSION['employee']=$_POST['loginUsername'];
-
 				}
 				
 				$_SESSION['user']=$_POST['loginUsername'];
@@ -55,6 +54,7 @@ if(!empty($_POST['loginUsername']) && !empty($_POST['loginPassword'])){
 				$_SESSION['login_time']=date("h:i:sa");
 				$_SESSION['department']=$a['department'];
 				$_SESSION['email']=$a['email'];
+
 				
 				
 				$resp['error'] = false;

@@ -12,18 +12,8 @@ $('document').ready(function(){
 			data:data,
 			dataType:'json',
 			success:function(resp){
-					//alert(resp.msg);
-					
-					
-					
-					
-					     $('.msg').text(resp.msg);
-						  setTimeout(sending, 1000);
-						
-           			function sending()
-           			{	
+					alert(resp.msg);
 					if(resp.user=='admin'){
-						$('.msg').delay(10000);
 						window.location.href="index.php";}
 						else{
 							window.location.href="user.php";
@@ -31,7 +21,6 @@ $('document').ready(function(){
 					if(resp.user==''){
 						window.location.href="register.php";
 					}
-				}
 				
 
 			}

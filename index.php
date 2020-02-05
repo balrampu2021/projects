@@ -1,26 +1,29 @@
 <?php
 session_start();
-//print_r($_SESSION);die;
+//print_r($_SESSION);
 //die;
-$id=$_SESSION['id'];
         
 	include_once('inc/db.php');
     include_once('inc/function.php');
 	include_once('public/header.php');
-  if(isset($_SESSION['employee']))
+  if(!isset($_SESSION['user']))
             { 
                header('location:login.php') ;
             }
-           
     $role_id=0;        
     $a=show_users($conn,$role_id); 
-    //print_r($a);die;
-        $user=select_users($conn,$id);
-        foreach ($user as $key => $value) {
-          # code...
+	$allUsers=show_all_users($conn);
+   
+	                 $count=0;
+                   //print_r($a);die;
+                   foreach ($allUsers as $key => $value) {
+                    // print_r($value) ;
+					$count++;
+				   }
+				   
        
-        //print_r($user);die;
-   ?>
+
+?>
 	
     <!-- Side Navbar -->
    
@@ -114,10 +117,9 @@ $id=$_SESSION['id'];
                 </li>
                 <!-- Languages dropdown    -->
                
-				      
+				
                 <!-- Log out-->
-                <li class="nav-item"><a href="logout.php?logout=<?php echo $value['id'];?>" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
-              <?php  } ?>
+                <li class="nav-item"><a href="<?=BASE_URL?>" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
                  <?php
             //print_r($_SESSION['user']);die;
             if(!isset($_SESSION['user']))
@@ -143,8 +145,8 @@ $id=$_SESSION['id'];
             <div class="col-xl-2 col-md-4 col-6">
               <div class="wrapper count-title d-flex">
                 <div class="icon"><i class="icon-user"></i></div>
-                <div class="name"><strong class="text-uppercase">New Clients</strong><span>Last 7 days</span>
-                  <div class="count-number">25</div>
+                <div class="name"><strong class="text-uppercase">Number Of Employees</strong><span></span>
+                  <div class="count-number"><?php  echo $count; ?></div>
                 </div>
               </div>
             </div>

@@ -4,14 +4,16 @@
 	   
 
 
-	function create_user($conn, $user, $email, $pass ,$department){
-		$stmt = $conn->prepare("INSERT INTO tbl_user(username, password, email, department) 
-			VALUES(:username, :password, :email,:department)");
+	function create_user($conn, $user, $email, $pass ,$department ,$ipaddfinal){
+		$stmt = $conn->prepare("INSERT INTO tbl_user(username, password, email, department, ip_address) 
+			VALUES(:username, :password, :email,:department, :ip_address)");
 		$stmt->execute([
 			':username' =>$user,
 			':email' =>$email,
 			':password' =>md5($pass),
 			':department' =>$department,
+			':ip_address'=>$ipaddfinal,
+			
             			
 		]);
 		if($stmt->rowCount() > 0){
@@ -33,11 +35,12 @@
 	} 
 	return false;
 }
-function login_user($conn,$user,$pass){
-	$stmt=$conn->prepare("select * from tbl_user where username=:username and password=:password");
+function login_user($conn,$user,$pass,$ip){
+	$stmt=$conn->prepare("select * from tbl_user where username=:username and password=:password and ip_address=:ip");
 	$stmt->execute([
 		':username'=> $user,
 		':password'=> md5($pass),
+		':ip'=>$ip,
 		
 	]);
 	
@@ -89,6 +92,17 @@ function select_users($conn,$id){
 		':id'=>$id,
 		
 	]);
+		$res=$stmt->fetchAll(PDO::FETCH_ASSOC);
+		//echo '<pre>';
+		//print_r($res);die();
+		return $res;
+		
+		
+
+}
+function select_users_alll($conn,$id){
+	$stmt=$conn->prepare("select * from employ_table where user_id=:user_id");
+	$stmt->execute([':user_id'=>$id,]);
 		$res=$stmt->fetchAll(PDO::FETCH_ASSOC);
 		//echo '<pre>';
 		//print_r($res);die();
@@ -235,17 +249,24 @@ function time_select($conn,$id){
 }
 
 function select_time($conn){
-	$stmt=$conn->prepare("SELECT * FROM employ_table");
+	$stmt=$conn->prepare("SELECT * FROM tbl_user");
 	$stmt->execute();
 	
 	$res=$stmt->fetchAll(PDO::FETCH_ASSOC);
 	
 	return $res;
 }
+function show_all_users($conn){
+	$stmt=$conn->prepare("select * from tbl_user");
+	$stmt->execute();
+		$res=$stmt->fetchAll(PDO::FETCH_ASSOC);
+		//echo '<pre>';
+		//print_r($res);die();
+		return $res;
+		
+		
 
-
-
-
+}
 
 
 

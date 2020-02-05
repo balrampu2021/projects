@@ -1,6 +1,6 @@
 <?php
 session_start();
-//print_r($_SESSION);die;
+//print_r($_SESSION);
 
 //die;
 
@@ -9,15 +9,12 @@ session_start();
     include_once('inc/function.php');
 	include_once('public/header.php');
 	
-   if(!isset($_SESSION['employee']))
+  if(!isset($_SESSION['user']))
             { 
                header('location:login.php') ;
             }
 			$id=$_SESSION['id'];
 			 $a=select_users($conn,$id);
-       foreach ($a as $key => $value) {
-         # code...
-   
 		
 		?>
 		
@@ -54,7 +51,7 @@ session_start();
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>10 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications </strong></a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
                   </ul>
                 </li>
                 <!-- Messages dropdown-->
@@ -105,7 +102,6 @@ session_start();
           </div>
         </nav>
       </header>
-    <?php } ;?>
 <center>  <h1>USER </h1></center>
  <!-- Side Navbar -->
    
@@ -133,10 +129,9 @@ session_start();
             
 			  <li><a href="leave.php"><i class="icon-form"></i>Leaves
 			</a></li>
-			<li><a href="date.php"><i class="icon-form"></i>Check-In 
+			<li><a href="date.php"><i class="icon-form"></i>Datepicker 
 			</a></li>
-      <li><a href="#"><i class="icon-form"></i>Announcements
-      </a></li>
+			
 		
 			
             

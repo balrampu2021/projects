@@ -13,6 +13,7 @@ session_start();
     $role_id=0;        
     $a=show_users($conn,$role_id); 
 
+
 ?>
 
 
@@ -159,10 +160,11 @@ session_start();
               </tr>
 			  </thead>
               <?php
-             
+             $count=0;
                    //print_r($a);die;
                    foreach ($a as $key => $value) {
                     // print_r($value) ;
+					$count++;
                     ?>
 					<tbody>
                     <tr>
@@ -188,7 +190,7 @@ session_start();
 
                    }
                   
-
+    $_SESSION['count']=$count; 
                 
               ?>
                 
