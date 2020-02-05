@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+ <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="./css/prettify-1.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+        <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+        
+        
+        <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+</head>
+<body>
+	
+	
+ 
+<div class="container">
+	<div class="timer">TIME:</div>
+	<form>
+    <div class="col-sm-3" style="height:130px;display: inline;">
+        <div class="form-group">
+        	
+            <div  style='' class='input-group date' id='datetimepicker10'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                   
+
+                </span>
+
+            </div>
+            
+             
+        
+        </div>
+    </div>
+    
+     <div class="col-sm-2" style="height:130px;display: inline;">
+    	 <input type="text" name="task" placeholder="things to do"  class=" form-control"/>
+    </div >
+    <div class="col-sm-2" style="height:130px;display: inline;">
+    	 <input type="button"  id="start" name="task" placeholder="start"  value="start"class="form-control"/>
+    </div >
+    
+    <div class="col-sm-2" style="height:130px;display: inline;">
+    	 <input type="button" name="task" placeholder="stop" id="stop"  value="stop"class=" form-control"/>
+    </div >
+   <form> <h1><p id="output">
+		
+			<!-- <b class='c'>00</b>
+			<b class='b'>00</b>
+			<b class='a'>00</b> -->
+			<span class="c">00</span>
+			<span class="b">00</span> 
+			<span class="a">00</span>
+
+			</p>
+			
+			
+
+			
+		
+   
+    </form>
+    <h1><p id="output">
+		
+			<!-- <b class='c'>00</b>
+			<b class='b'>00</b>
+			<b class='a'>00</b> -->
+			<span class="f">00</span>
+			<span class="e">00</span> 
+			<span class="d">00</span>
+
+			</p>
+   
+</script>
+<script>
+
+	
+        $(function () {
+            $('#datetimepicker10').datetimepicker({minDate: new Date(),
+                viewMode: 'months',
+                format: 'DD/MM/YYYY'
+            });
+        });
+	
+	var i;
+	var a;
+			$a=$('#start').click(function(){
+				$('#start').prop('disabled',true);
+				$i=setInterval(function(){
+               var hr = $('.c').text()*1;
+               var mn = $('.b').text()*1;
+                  var sc = $('.a').text()*1;
+               if(sc < 60){
+                 $('.a').text(sc + 1);
+
+                          }else{$('.a').text(1);
+                       if(mn < 60){
+             $('.b').text(mn + 1);
+                 }else{$('.b').text(1);
+              $('.c').text(hr + 1);
+               }
+                }
+               }, 1000);
+				
+			});
+
+
+			$('#stop').click(function(){
+			
+				clearInterval($i);
+				$('#start').prop('disabled',false);
+				var sec = $('.a').text()*1;
+				var min = $('.b').text()*1;
+				var hr = $('.c').text()*1;
+				var sec1=$('.d').text()*1;
+				var min2=$('.e').text()*1;
+				sec1=sec1+sec;
+				if(sec1>60)
+				{
+					min2=min2+1;
+					$('.e').text(min2);
+					$('.d').text("00");
+					sec1=0;
+				}
+
+				$('.d').text(sec1);
+				$('.a').text('00');
+
+
+
+
+				
+				
+
+
+
+				
+			});
+		         
+ 
+
+
+	
+	
+
+
+    </script>
+          
+</div>
+</body>
+</html>

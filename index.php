@@ -1,15 +1,22 @@
 <?php
 session_start();
-//print_r($_SESSION);
+//print_r($_SESSION);die;
 //die;
+//print_r($_SESSION);die;
         
 	include_once('inc/db.php');
     include_once('inc/function.php');
 	include_once('public/header.php');
+if(!isset($_SESSION['admin']))
+            { 
+               header('location:logout.php') ;
+            }
   if(!isset($_SESSION['user']))
             { 
-               header('location:login.php') ;
+               header('location:logout.php') ;
             }
+   
+
     $role_id=0;        
     $a=show_users($conn,$role_id); 
 	$allUsers=show_all_users($conn);
@@ -37,7 +44,7 @@ session_start();
             <h2 class="h5">Netzila</h2><span>Web Developer</span>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center text-success"> <strong>N</strong><strong class="text-success">Z</strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">

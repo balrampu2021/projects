@@ -36,7 +36,7 @@ session_start();
             <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
              <li><a href="leave_status.php"> <i class="icon-grid"></i>Leaves                            
             <li><a href="table.php"> <i class="icon-grid"></i>Details                            </a></li>
-			  <?php
+        <?php
             //print_r($_SESSION['user']);die;
             if(!isset($_SESSION['user']))
             { 
@@ -107,9 +107,9 @@ session_start();
                 </li>
                 <!-- Languages dropdown    -->
                
-				
+        
                 <!-- Log out-->
-                <li class="nav-item"><a href="<?=BASE_URL?>" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+<li class="nav-item"><a href="logout.php"><span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
                  <?php
             //print_r($_SESSION['user']);die;
             if(!isset($_SESSION['user']))

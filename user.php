@@ -11,7 +11,7 @@ session_start();
 	
   if(!isset($_SESSION['employee']))
             { 
-               header('location:login.php') ;
+               header('location:logout.php') ;
             }
 			
 			$id=$_SESSION['id'];
